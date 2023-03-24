@@ -16,8 +16,7 @@ const Create = () => {
     const [error, setError] = useState(false);
     const navigate = useNavigate();
 
-    const authToken = ENTER API KEY HERE
-    const randomWords = require('random-words');
+    const authToken = <ENTER YOUR API KEY HERE>
     const fetchGPTEndpoint = (authToken, prompt) => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", authToken);
@@ -26,7 +25,7 @@ const Create = () => {
         const raw = JSON.stringify({
             "model": "text-davinci-003",
             "prompt": prompt,
-            "temperature": 0,
+            "temperature": 0.8,
             "max_tokens": 1000
         });
 
@@ -45,6 +44,29 @@ const Create = () => {
             .catch(error => console.log('error', error));
     }
 
+    const fetchDallEEndpoint = (prompt) =>{
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", authToken);
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({"prompt": prompt, "n": 1, "size": "1024x1024"});
+
+        const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        return fetch("https://api.openai.com/v1/images/generations", requestOptions)
+            .then(response => response.json())
+            .then((result) => {
+                console.log(result.data[0].url)
+                return result.data[0].url;
+            })
+            .catch(error => console.log('error', error));
+    }
+
     const fetchBlogEndpoint = (blog) => {
         fetch('http://localhost:8000/blogs', {
             method: 'POST',
@@ -57,11 +79,12 @@ const Create = () => {
 
 
     const callGPTEndpoints = async (title) => {
-        const bodyPrompt = "As an expert journalist generate a 250 tokens or under blog that is based on the title" + title + " and include the subject " + randomWords(1).toString() + " make sure the output does not start with two break points"
+        const bodyPrompt = "As an expert journalist generate a 250 tokens or under blog that is based on the title" + title
         const authorPrompt = "Based on a blog titled " + title + " think of an appropriate author name and just give back the name and nothing else"
         const body = await fetchGPTEndpoint(authToken, bodyPrompt)
         const author = await fetchGPTEndpoint(authToken, authorPrompt)
-        return {title, body, author};
+        const picURL = await fetchDallEEndpoint(title)
+        return {title, body, author, picURL};
     }
     // const handleBatchSubmit = async (e) => {
     //     let Titles;
@@ -97,7 +120,8 @@ const Create = () => {
             if (chatGPT) {
                 blog = await callGPTEndpoints(title)
             } else {
-                blog = {title, body, author}
+                const picURL = await fetchDallEEndpoint(title)
+                blog = {title, body, author, picURL}
             }
 
             fetchBlogEndpoint(blog)

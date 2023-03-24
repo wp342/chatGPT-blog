@@ -1,11 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM Plex Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* base styles */
 * {
   margin: 0;
-  font-family: "IBM Plex Mono";
+  font-family: "Quicksand";
   color: #333;
 }
+input{
+  background-color: #BFF4DE;
+}
+
+textarea{
+  background-color: #BFF4DE;
+}
+
 .navbar {
   padding: 20px;
   display: flex;
@@ -15,7 +23,7 @@
   border-bottom: 1px solid #f2f2f2;
 }
 .navbar h1 {
-  color: #f1356d;
+  color: #50C878;
 }
 .navbar .links {
   margin-left: auto;
@@ -26,8 +34,19 @@
   padding: 6px;
 }
 .navbar a:hover {
-  color: #f1356d;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  color: red;
 }
+
+html {
+  background-color: #ccc;
+}
+
+.search-bar {
+  margin: auto;
+  width: 25%;
+}
+
 .content {
   max-width: 600px;
   margin: 40px auto;
@@ -45,7 +64,7 @@
 }
 .blog-preview h2 {
   font-size: 20px;
-  color: #f1356d;
+  color: #50C878;
   margin-bottom: 8px;
 }
 .blog-preview a{
@@ -53,9 +72,13 @@
 }
 
 /* blog details page */
+
+.blog-details{
+  text-align: center;
+}
 .blog-details h2 {
   font-size: 20px;
-  color: #f1356d;
+  color: #50C878;
   margin-bottom: 10px;
 }
 .blog-details div {
@@ -63,12 +86,14 @@
   white-space: pre-line;
 }
 .blog-details button {
-  background: #f1356d;
+  background: #50C878;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+  width: 40%;
+  margin-top: 30px;
 }
 
 /* create new blog form */
@@ -83,7 +108,7 @@
 }
 .create h2 {
   font-size: 20px;
-  color: #f1356d;
+  color: #50C878;
   margin-bottom: 30px;
 }
 .create input, .create textarea, .create select {
@@ -95,10 +120,15 @@
   display: block;
 }
 .create button {
-  background: #f1356d;
+  background: #50C878;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+button:hover{
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  color: red;
 }
