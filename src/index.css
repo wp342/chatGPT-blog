@@ -60,6 +60,7 @@
 }
 .blog-details div {
   margin: 20px 0;
+  white-space: pre-line;
 }
 .blog-details button {
   background: #f1356d;
