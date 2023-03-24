@@ -16,7 +16,7 @@ const Create = () => {
     const [error, setError] = useState(false);
     const navigate = useNavigate();
 
-    const authToken = "Bearer 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"
+    const authToken = ENTER API KEY HERE
     const randomWords = require('random-words');
     const fetchGPTEndpoint = (authToken, prompt) => {
         const myHeaders = new Headers();
