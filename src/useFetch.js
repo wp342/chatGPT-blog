@@ -6,15 +6,19 @@ const useFetch = (url) => {
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null)
 
-    useEffect(() =>{
+    useEffect(() => {
         fetch(url)
-            .then(res =>{
-                if (!res.ok){
+            .then(res => {
+                if (!res.ok) {
                     throw Error('Could Not Fetch Data')
                 }
                 return res.json();
             })
             .then(data => {
+                try {
+                    data.sort((a, b) => a.id - b.id);
+                } catch (e) {
+                }
                 setData(data);
                 setIsPending(false)
                 setError(null)
@@ -23,7 +27,7 @@ const useFetch = (url) => {
                 setIsPending(false)
                 setError(err.message)
             })
-    },[url]);
+    }, [url]);
 
     return {data, isPending, error}
 }

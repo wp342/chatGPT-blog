@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom";
 import useFetch from "./useFetch";
 import {useNavigate} from "react-router-dom";
+import {blogDeleteRequest} from "./Requests"
 
 const BlogDetails = () => {
     const {id} = useParams()
@@ -9,11 +10,10 @@ const BlogDetails = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        fetch('http://localhost:8000/blogs/' + blog.id, {
-            method: 'DELETE'
-        }).then(() =>
-            navigate('/')
-        )
+        blogDeleteRequest(blog.id)
+            .then(() =>
+                navigate('/')
+            )
     }
     return (
         <div className="blog-details">
@@ -25,7 +25,7 @@ const BlogDetails = () => {
                     <p>Written by {blog.author}</p>
                     <div>{blog.body}</div>
                     {blog.picURL && (
-                        <img src={blog.picURL} width="512" height="512" alt="new" />
+                        <img src={blog.picURL} width="512" height="512" alt="new"/>
                     )}
                 </article>
             }
