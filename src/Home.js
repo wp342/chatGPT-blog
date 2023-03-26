@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import BlogList from "./BlogList";
 import useFetch from "./useFetch";
 import {useNavigate} from "react-router-dom";
@@ -21,21 +21,23 @@ const Home = () => {
             );
     }
 
-    const handleClick = () => {
-        setLiked(!liked)
-    }
+    // const handleClick = () => {
+    //     setLiked(!liked)
+    // }
 
     return (
         <div className="home">
-            <form className="search-bar">
+            <h2>All Blogs</h2>
+            <form className="search-bar-heart">
+
                 <input type="search" placeholder="Search..."
                        type="text"
                        value={search}
                        onChange={(e) => setSearch(e.target.value)}
                 />
                 <div className="global-heart">
-                    {liked === false && <FiHeart onClick={handleClick} className="heart-unliked"/>}
-                    {liked && <FiHeart onClick={handleClick} className="heart-liked"/>}
+                    {liked === false && <FiHeart onClick={()=>setLiked(!liked)} className="heart-unliked"/>}
+                    {liked && <FiHeart onClick={()=>setLiked(!liked)} className="heart-liked"/>}
                 </div>
             </form>
             {error && <div>{error}</div>}

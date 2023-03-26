@@ -3,8 +3,12 @@
 /* base styles */
 * {
     margin: 0;
-    font-family: "Quicksand";
+    font-family: "Quicksand", serif;
     color: #333;
+}
+
+.App{
+    background: linear-gradient(to top, white, #00A67E);
 }
 
 input {
@@ -16,26 +20,34 @@ textarea {
 }
 
 .navbar {
-    padding: 20px;
     display: flex;
     align-items: center;
-    max-width: 600px;
-    margin: 0 auto;
-    border-bottom: 1px solid #f2f2f2;
+    width: 100%;
+    height:10%;
+    margin: 0 auto 0;
+    background-color: #00A67E;
+    padding-top: 1%;
+    position: fixed;
+    top:0;
 }
 
 .navbar h1 {
-    color: #50C878;
+    color: #da0606;
+    font-size: 40px;
+    padding-left: 5%;
 }
 
 .navbar .links {
     margin-left: auto;
+    margin-right: 5%;
 }
 
 .navbar a {
     margin-left: 16px;
     text-decoration: none;
     padding: 6px;
+    color: white;
+    font-size: 25px;
 }
 
 .navbar a:hover {
@@ -43,33 +55,45 @@ textarea {
     color: red;
 }
 
-html {
-    background-color: #ccc;
+.new-blog{
+    background-Color: #da0606;
+    border-Radius: 8px;
 }
 
-.search-bar {
+.search-bar-heart {
     display: grid;
-    grid-template-columns: 85% 15%;
+    grid-template-columns: 90% 10%;
     margin-bottom: 20px;
 }
 
+.search-bar-heart input{
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 30px;
+    color: #da0606;;
+}
+
 .global-heart {
-    margin-left: 12px;
+    margin-top: 7px;
 }
 
 .content {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
+    max-width: 70%;
+    margin:auto;
+    padding: 10% 20px 20px;
 }
 
-/* blog previews / list */
+.home h2{
+    color: #da0606;
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
 .blog-preview {
     display: grid;
     grid-template-columns: 90% 10%;
-    padding: 10px 16px;
     margin: 20px 0;
-    border-bottom: 1px solid #fafafa;
 }
 
 .blog-preview:hover {
@@ -78,7 +102,7 @@ html {
 
 .blog-preview h2 {
     font-size: 20px;
-    color: #50C878;
+    color: #da0606;
     margin-bottom: 8px;
 }
 
@@ -105,6 +129,7 @@ html {
     cursor: pointer;
     width: 30px;
     height: 30px;
+    margin-left: 12px;
 }
 
 .heart-liked {
@@ -114,6 +139,7 @@ html {
     cursor: pointer;
     width: 30px;
     height: 30px;
+    margin-left: 12px;
 }
 
 .heart-unliked:hover {
@@ -139,18 +165,22 @@ html {
 }
 
 .blog-details h2 {
-    font-size: 20px;
-    color: #50C878;
+    font-size: 30px;
+    color: #da0606;
     margin-bottom: 10px;
 }
 
+.blog-details p{
+    margin-bottom: 5px;
+}
+
 .blog-details div {
-    margin: 20px 0;
     white-space: pre-line;
+    margin-top: 20px;
 }
 
 .blog-details button {
-    background: #50C878;
+    background: #da0606;
     color: #fff;
     border: 0;
     padding: 8px;
@@ -162,7 +192,7 @@ html {
 
 /* create new blog form */
 .create {
-    max-width: 400px;
+    max-width: 70%;
     margin: 0 auto;
     text-align: center;
 }
@@ -170,25 +200,39 @@ html {
 .create label {
     text-align: left;
     display: block;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.create form div{
+    display: grid;
+    grid-template-columns: 50% 10%;
+    margin-bottom: 10px;
+
 }
 
 .create h2 {
-    font-size: 20px;
-    color: #50C878;
-    margin-bottom: 30px;
+    color: #da0606;
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 20px;
 }
 
 .create input, .create textarea, .create select {
     width: 100%;
     padding: 6px 10px;
     margin: 10px 0;
-    border: 1px solid #ddd;
+    border: 2px solid #da0606;
     box-sizing: border-box;
     display: block;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 25px;
+
 }
 
 .create button {
-    background: #50C878;
+    background: #da0606;
     color: #fff;
     border: 0;
     padding: 8px;
