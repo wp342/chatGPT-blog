@@ -7,7 +7,7 @@
     color: #333;
 }
 
-.App{
+.App {
     background: linear-gradient(to top, white, #00A67E);
 }
 
@@ -23,12 +23,12 @@ textarea {
     display: flex;
     align-items: center;
     width: 100%;
-    height:10%;
+    height: 10%;
     margin: 0 auto 0;
     background-color: #00A67E;
     padding-top: 1%;
     position: fixed;
-    top:0;
+    top: 0;
 }
 
 .navbar h1 {
@@ -55,7 +55,7 @@ textarea {
     color: red;
 }
 
-.new-blog{
+.new-blog {
     background-Color: #da0606;
     border-Radius: 8px;
 }
@@ -66,7 +66,7 @@ textarea {
     margin-bottom: 20px;
 }
 
-.search-bar-heart input{
+.search-bar-heart input {
     background-color: transparent;
     font-weight: bold;
     font-size: 30px;
@@ -79,11 +79,11 @@ textarea {
 
 .content {
     max-width: 70%;
-    margin:auto;
+    margin: auto;
     padding: 10% 20px 20px;
 }
 
-.home h2{
+.home h2 {
     color: #da0606;
     font-size: 40px;
     font-weight: bolder;
@@ -170,13 +170,24 @@ textarea {
     margin-bottom: 10px;
 }
 
-.blog-details p{
+.blog-details p {
     margin-bottom: 5px;
 }
 
 .blog-details div {
     white-space: pre-line;
     margin-top: 20px;
+}
+
+.blog-details img {
+    margin-top: 20px;
+}
+
+.navigation-like{
+    display: inline-grid;
+    width: 100%;
+    grid-template-columns: 33% 33% 33%;
+    justify-items: center;
 }
 
 .blog-details button {
@@ -189,6 +200,47 @@ textarea {
     width: 40%;
     margin-top: 30px;
 }
+
+/*Comments */
+.comments{
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 30px;
+}
+
+.comments div{
+    width: 60%;
+    margin: 0 auto;
+
+}
+
+.commented-element{
+   margin-top: 20px;
+}
+
+.comment{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.author-time-stamp{
+    font-size:12px;
+    color: #da0606;
+}
+
+
+.comments div textarea{
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+
+
+
+
 
 /* create new blog form */
 .create {
@@ -204,7 +256,7 @@ textarea {
     font-size: 28px;
 }
 
-.create form div{
+.create form div {
     display: grid;
     grid-template-columns: 50% 10%;
     margin-bottom: 10px;

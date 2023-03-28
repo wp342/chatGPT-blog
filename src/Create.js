@@ -13,16 +13,17 @@ const Create = () => {
     const [author, setAuthor] = useState('');
     const [isPending, setIsPending] = useState(false);
     const navigate = useNavigate();
+    const liked = false;
+    let comments = []
 
-    const authToken = <INSERT YOUR OPENAI API KEY HERE>
+    const authToken = <Enter the OPENAI API KEY HERE>
     const callGPTEndpoints = async (title) => {
         const bodyPrompt = "As an expert journalist generate a 250 tokens or under blog that is based on the title" + title
         const authorPrompt = "Based on a blog titled " + title + " think of an appropriate author name and just give back the name and nothing else"
         const body = await fetchGPTEndpoint(authToken, bodyPrompt)
         const author = await fetchGPTEndpoint(authToken, authorPrompt)
         const picURL = await dallERequest(authToken, title)
-        const liked = false;
-        return {title, body, author, picURL, liked};
+        return {title, body, author, picURL, liked, comments};
     }
     const handleBatchSubmit = async (e) => {
         let Titles;
@@ -40,9 +41,11 @@ const Create = () => {
         splitTitles.map(async ti => {
             let blog = await callGPTEndpoints(ti)
             await blogPostRequest(blog)
+        }).then(()=>{
+            setIsPending(false);
+            navigate('/');
         })
-        setIsPending(false);
-        navigate('/');
+
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -55,7 +58,6 @@ const Create = () => {
                 blog = await callGPTEndpoints(title)
             } else {
                 const picURL = await dallERequest(authToken, title)
-                const liked = false;
                 blog = {title, body, author, picURL, liked}
             }
 
@@ -95,7 +97,7 @@ const Create = () => {
                         <textarea
                             placeholder="Blog Body..."
                             value={body}
-                            onChange={(e) => setBody( e.target.value)}
+                            onChange={(e) => setBody(e.target.value)}
                             required
                         ></textarea>
                         <input

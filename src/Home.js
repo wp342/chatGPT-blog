@@ -21,10 +21,6 @@ const Home = () => {
             );
     }
 
-    // const handleClick = () => {
-    //     setLiked(!liked)
-    // }
-
     return (
         <div className="home">
             <h2>All Blogs</h2>
